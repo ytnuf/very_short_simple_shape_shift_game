@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 window/size/viewport_width=800
 window/size/viewport_height=608
 
+[layer_names]
+
+2d_physics/layer_2="player"
+2d_physics/layer_3="block"
+
 [physics]
 
 common/physics_ticks_per_second=64
