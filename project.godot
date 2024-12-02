@@ -14,6 +14,15 @@ config/name="shape_shift_game"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=608
+
+[physics]
+
+common/physics_ticks_per_second=64
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
