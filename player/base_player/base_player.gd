@@ -1,7 +1,7 @@
 
 extends CharacterBody2D
 
-const BLOCK_LENGTH : float = 16.0
+const BLOCK_LENGTH : float = 32.0
 
 var _is_jumping : bool = false
 var _jump_buffer : float = 0.0

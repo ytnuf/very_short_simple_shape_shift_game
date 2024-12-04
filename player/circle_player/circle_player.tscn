@@ -6,7 +6,7 @@
 friction = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cfihh"]
-radius = 8.0
+radius = 16.0
 
 [node name="CirclePlayer" type="RigidBody2D"]
 collision_layer = 2
