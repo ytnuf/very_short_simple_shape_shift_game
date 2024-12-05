@@ -1,11 +1,16 @@
 
+class_name BasePlayer
 extends CharacterBody2D
 
 const BLOCK_LENGTH : float = 32.0
 
+@export var to_shape : PackedScene
+
 var _is_jumping : bool = false
 var _jump_buffer : float = 0.0
 var _p_meter : float = 0.0
+
+@onready var _anim := $AnimationPlayer
 
 
 func _physics_process(dt: float) -> void:
@@ -53,6 +58,20 @@ func _physics_process(dt: float) -> void:
 	move_and_slide()
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(&"shape_shift"):
+		_anim.play(&"start_shape_shift")
+
+
 static func _initial_jump_speed(x_speed: float) -> float:
 	# Jump height range is [3.84, 6] blocks
 	return (0.4 * x_speed) + (18.0 * BLOCK_LENGTH)
+
+
+func _shape_shift():
+		var parent := get_parent()
+		var next_form : PhysicsBody2D = to_shape.instantiate()
+		next_form.position = position
+		next_form.to_shape = load(&"res://player/base_player/base_player.tscn")
+		parent.add_child(next_form)
+		queue_free()

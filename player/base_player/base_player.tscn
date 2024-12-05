@@ -1,10 +1,79 @@
-[gd_scene load_steps=4 format=3 uid="uid://d0e8tunbd4uqg"]
+[gd_scene load_steps=8 format=3 uid="uid://d0e8tunbd4uqg"]
 
 [ext_resource type="Texture2D" uid="uid://bonks3rpddw8v" path="res://player/base_player/base_player.png" id="1_iocoo"]
 [ext_resource type="Script" path="res://player/base_player/base_player.gd" id="1_p0nba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d7ej"]
 size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_i1ba4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o61tw"]
+resource_name = "end_shape_shift"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2qd74"]
+resource_name = "start_shape_shift"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_shape_shift"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ym3im"]
+_data = {
+"RESET": SubResource("Animation_i1ba4"),
+"end_shape_shift": SubResource("Animation_o61tw"),
+"start_shape_shift": SubResource("Animation_2qd74")
+}
 
 [node name="BasePlayer" type="CharacterBody2D"]
 collision_layer = 2
@@ -16,3 +85,9 @@ texture = ExtResource("1_iocoo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8d7ej")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ym3im")
+}
+autoplay = "end_shape_shift"
