@@ -72,6 +72,7 @@ func _shape_shift():
 		var parent := get_parent()
 		var next_form : PhysicsBody2D = to_shape.instantiate()
 		next_form.position = position
+		next_form.velocity = velocity
 		next_form.to_shape = load(&"res://player/base_player/base_player.tscn")
 		parent.add_child(next_form)
 		queue_free()

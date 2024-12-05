@@ -4,9 +4,15 @@ extends RigidBody2D
 
 @export var to_shape : PackedScene
 
+var velocity := Vector2.ZERO
+
 var _min_speed := Vector2.ZERO
 
 @onready var _anim := $AnimationPlayer
+
+
+func _ready() -> void:
+	linear_velocity = velocity
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -18,6 +24,7 @@ func _shape_shift():
 		var parent := get_parent()
 		var next_form : PhysicsBody2D = to_shape.instantiate()
 		next_form.position = position
+		next_form.velocity = linear_velocity
 		next_form.to_shape = load(&"res://player/circle_player/circle_player.tscn")
 		parent.add_child(next_form)
 		queue_free()
