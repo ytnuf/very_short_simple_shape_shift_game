@@ -30,3 +30,8 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 	_min_speed.x = absf(state.linear_velocity.x)
 	if absf(state.linear_velocity.y) < _min_speed.y:
 		state.linear_velocity.y = signf(state.linear_velocity.y) * _min_speed.y
+
+
+func _on_hurt() -> void:
+	#TODO: implement death
+	print("DIE")

@@ -75,3 +75,8 @@ func _shape_shift():
 		next_form.to_shape = load(&"res://player/base_player/base_player.tscn")
 		parent.add_child(next_form)
 		queue_free()
+
+
+func _on_hurt() -> void:
+	#TODO: implement death
+	print("DIE")

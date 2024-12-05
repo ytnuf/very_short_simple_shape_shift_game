@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://d0e8tunbd4uqg"]
+[gd_scene load_steps=9 format=3 uid="uid://d0e8tunbd4uqg"]
 
 [ext_resource type="Texture2D" uid="uid://bonks3rpddw8v" path="res://player/base_player/base_player.png" id="1_iocoo"]
 [ext_resource type="Script" path="res://player/base_player/base_player.gd" id="1_p0nba"]
@@ -75,6 +75,9 @@ _data = {
 "start_shape_shift": SubResource("Animation_2qd74")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1dlcv"]
+size = Vector2(16, 16)
+
 [node name="BasePlayer" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 4
@@ -91,3 +94,12 @@ libraries = {
 "": SubResource("AnimationLibrary_ym3im")
 }
 autoplay = "end_shape_shift"
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("RectangleShape2D_1dlcv")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurt" unbinds=1]
