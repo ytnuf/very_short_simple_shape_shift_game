@@ -4,6 +4,8 @@ extends RigidBody2D
 
 @export var to_shape : PackedScene
 
+var _min_speed := Vector2.ZERO
+
 @onready var _anim := $AnimationPlayer
 
 
@@ -19,3 +21,12 @@ func _shape_shift():
 		next_form.to_shape = load(&"res://player/circle_player/circle_player.tscn")
 		parent.add_child(next_form)
 		queue_free()
+
+
+func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
+	# Prevent slowing down (yes, this is a bit hacky)
+	if absf(state.linear_velocity.x) < _min_speed.x:
+		state.linear_velocity.x = signf(state.linear_velocity.x) * _min_speed.x
+	_min_speed.x = absf(state.linear_velocity.x)
+	if absf(state.linear_velocity.y) < _min_speed.y:
+		state.linear_velocity.y = signf(state.linear_velocity.y) * _min_speed.y
