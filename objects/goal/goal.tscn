@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://c46difh4ogwq0"]
+
+[ext_resource type="Texture2D" uid="uid://ctpnscjkomx0e" path="res://objects/goal/goal.png" id="1_5ltha"]
+[ext_resource type="Script" path="res://objects/goal/goal.gd" id="1_peybd"]
+[ext_resource type="AudioStream" uid="uid://cdlkqhff6621c" path="res://objects/goal/level_complete.ogg" id="3_k7smc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xjlvv"]
+atlas = ExtResource("1_5ltha")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8ede"]
+atlas = ExtResource("1_5ltha")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r2e07"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjlvv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8ede")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4jdk"]
+radius = 23.0
+
+[sub_resource type="Animation" id="Animation_ni87e"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8h73w"]
+resource_name = "floating"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(0.5, 2, 0.5, 2, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -12), Vector2(0, 0), Vector2(0, 12), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yxbf2"]
+_data = {
+"RESET": SubResource("Animation_ni87e"),
+"floating": SubResource("Animation_8h73w")
+}
+
+[node name="Goal" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_peybd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_r2e07")
+autoplay = "default"
+frame_progress = 0.231587
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g4jdk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yxbf2")
+}
+autoplay = "floating"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_k7smc")
+
+[connection signal="body_entered" from="." to="." method="_on_collected" flags=6]
