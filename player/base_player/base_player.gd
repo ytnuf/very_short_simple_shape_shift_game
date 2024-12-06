@@ -6,8 +6,6 @@ const BLOCK_LENGTH : float = Constants.BLOCK_LENGTH
 
 @export var to_shape : PackedScene
 
-var _is_jumping : bool = false
-var _jump_buffer : float = 0.0
 var _p_meter : float = 0.0
 
 @onready var _anim := $AnimationPlayer
@@ -22,9 +20,7 @@ func _physics_process(dt: float) -> void:
 	const P_METER_INC := 30.0
 	const P_METER_DEC := 15.0
 	const P_METER_MAX := 28.0
-	const JUMP_GRAVITY := 42.1875 * BLOCK_LENGTH
-	const FALL_GRAVITY := 84.375 * BLOCK_LENGTH
-	const MAX_JUMP_BUFFER := 0.0625
+	const FALL_GRAVITY := 42.1875 * BLOCK_LENGTH
 	
 	if absf(velocity.x) >= RUN_SPEED and is_on_floor():
 		_p_meter += P_METER_INC * dt
@@ -43,17 +39,7 @@ func _physics_process(dt: float) -> void:
 	else:
 		velocity.x -= cur_dir * SKID_RUN_DECELERATION * dt
 	
-	_jump_buffer -= dt
-	if Input.is_action_just_pressed(&"jump"):
-		_jump_buffer = MAX_JUMP_BUFFER
-	if is_on_floor() and _jump_buffer >= 0.0:
-		_is_jumping = true
-		_jump_buffer = 0.0
-		velocity.y = -_initial_jump_speed(absf(velocity.x) )
-	elif is_on_floor() or Input.is_action_just_released(&"jump"):
-		_is_jumping = false
-	var gravity := JUMP_GRAVITY if _is_jumping else FALL_GRAVITY
-	velocity.y += gravity * dt
+	velocity.y += FALL_GRAVITY * dt
 	
 	move_and_slide()
 
@@ -61,11 +47,6 @@ func _physics_process(dt: float) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(&"shape_shift"):
 		_anim.play(&"start_shape_shift")
-
-
-static func _initial_jump_speed(x_speed: float) -> float:
-	# Jump height range is [3.84, 6] blocks
-	return (0.4 * x_speed) + (18.0 * BLOCK_LENGTH)
 
 
 func _shape_shift():
