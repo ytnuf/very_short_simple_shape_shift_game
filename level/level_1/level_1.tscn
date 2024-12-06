@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://rwdaaw3nq255"]
+[gd_scene load_steps=5 format=4 uid="uid://rwdaaw3nq255"]
 
 [ext_resource type="Texture2D" uid="uid://dpepyqyatx2u3" path="res://level/background.png" id="1_xvcdw"]
 [ext_resource type="TileSet" uid="uid://kug5sa8sa5f8" path="res://level/tiles/block.tres" id="2_c0rn0"]
 [ext_resource type="PackedScene" uid="uid://d0e8tunbd4uqg" path="res://player/base_player/base_player.tscn" id="3_pgtj7"]
+[ext_resource type="PackedScene" uid="uid://b58ji4vb8u5x5" path="res://player/circle_player/circle_player.tscn" id="4_54l5l"]
 
 [node name="Level1" type="Node2D"]
 metadata/_edit_vertical_guides_ = [800.0]
@@ -49,3 +50,4 @@ tile_set = ExtResource("2_c0rn0")
 
 [node name="BasePlayer" parent="." instance=ExtResource("3_pgtj7")]
 position = Vector2(272, 496)
+to_shape = ExtResource("4_54l5l")
