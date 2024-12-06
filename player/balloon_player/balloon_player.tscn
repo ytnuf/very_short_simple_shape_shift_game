@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://dqs0dlxcgu8xh"]
+
+[ext_resource type="Script" path="res://player/balloon_player/balloon_player.gd" id="1_qui5i"]
+[ext_resource type="Texture2D" uid="uid://b6det6fs5he13" path="res://player/balloon_player/balloon_player.png" id="1_v1ryu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ysci"]
+radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_er2un"]
+
+[node name="BalloonPlayer" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_qui5i")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v1ryu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4ysci")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+shape = SubResource("CircleShape2D_er2un")
