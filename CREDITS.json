@@ -1,3 +1,16 @@
 {
-	"creator": "ytnuf"
+	"creator": "ytnuf",
+	"assets": [
+		{
+			"files": [
+				"res://objects/goal/level_complete.ogg"
+			],
+			"creator name": "jens.enk",
+			"creator page": "https://freesound.org/people/jens.enk/",
+			"source name": "completed.ogg",
+			"source page": "https://freesound.org/people/jens.enk/sounds/434612/",
+			"license name": "CC BY 3.0",
+			"license page": "https://creativecommons.org/licenses/by/3.0/legalcode.en"
+		}
+	]
 }
