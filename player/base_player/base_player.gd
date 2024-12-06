@@ -2,7 +2,7 @@
 class_name BasePlayer
 extends CharacterBody2D
 
-const BLOCK_LENGTH : float = 32.0
+const BLOCK_LENGTH : float = Constants.BLOCK_LENGTH
 
 @export var to_shape : PackedScene
 
