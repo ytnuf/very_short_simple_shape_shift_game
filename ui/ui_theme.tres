@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://brtvohdse4qye"]
+
+[ext_resource type="FontFile" uid="uid://d174q1ok7s5ve" path="res://ui/monostilus.ttf" id="1_of5j7"]
+
+[resource]
+default_font = ExtResource("1_of5j7")
+default_font_size = 40
