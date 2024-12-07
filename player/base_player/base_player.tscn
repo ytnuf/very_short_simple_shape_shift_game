@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://player/base_player/base_player.gd" id="1_p0nba"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d7ej"]
-size = Vector2(32, 32)
+size = Vector2(30, 32)
 
 [sub_resource type="Animation" id="Animation_i1ba4"]
 length = 0.001

@@ -21,6 +21,7 @@ func _physics_process(dt: float) -> void:
 	const P_METER_DEC := 15.0
 	const P_METER_MAX := 28.0
 	const FALL_GRAVITY := 42.1875 * BLOCK_LENGTH
+	const MAX_FALL_SPEED := 15.0 * BLOCK_LENGTH
 	
 	if absf(velocity.x) >= RUN_SPEED and is_on_floor():
 		_p_meter += P_METER_INC * dt
@@ -40,6 +41,7 @@ func _physics_process(dt: float) -> void:
 		velocity.x -= cur_dir * SKID_RUN_DECELERATION * dt
 	
 	velocity.y += FALL_GRAVITY * dt
+	velocity.y = min(MAX_FALL_SPEED, velocity.y)
 	
 	move_and_slide()
 
