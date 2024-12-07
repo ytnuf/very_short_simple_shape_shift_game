@@ -22,6 +22,17 @@
 			"source page": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN2100003",
 			"license name": "CC BY 3.0",
 			"license page": "https://creativecommons.org/licenses/by/3.0/legalcode.en"
+		},
+		{
+			"files": [
+				"res://ui/monostilus.ttf"
+			],
+			"creator name": "Hsyenoh05",
+			"creator page": "https://opengameart.org/users/hsyenoh05",
+			"source name": "Monostilus",
+			"source page": "https://opengameart.org/content/monostilus",
+			"license name": "CC0 1.0",
+			"license page": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en"
 		}
 	]
 }
