@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://by0sar77j03l4"]
+
+[ext_resource type="Theme" uid="uid://brtvohdse4qye" path="res://ui/ui_theme.tres" id="1_dnfte"]
+[ext_resource type="Script" path="res://menu/main_menu.gd" id="1_edved"]
+[ext_resource type="AudioStream" uid="uid://b4mr3ie6odwtb" path="res://menu/late_night_radio.ogg" id="2_y48rd"]
+[ext_resource type="Texture2D" uid="uid://1upvtwtgduq4" path="res://menu/background.png" id="3_vaaku"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_dnfte")
+script = ExtResource("1_edved")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_vaaku")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_y48rd")
+autoplay = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -223.0
+offset_top = -329.0
+offset_right = 212.0
+offset_bottom = 288.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_dnfte")
+theme_override_font_sizes/font_size = 64
+text = "Very
+Short
+Simple
+Shape
+Shift
+Game"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Start Game!"
+
+[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
