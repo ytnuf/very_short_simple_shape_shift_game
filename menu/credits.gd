@@ -13,18 +13,24 @@ func _ready() -> void:
 
 	var credit_lst := $CreditList
 	var asset_title := Label.new()
-	asset_title.text = "Assets Used: "
+	asset_title.text = "\nAssets Used: \n"
 	asset_title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	credit_lst.add_child(asset_title)
+	var space_label := Label.new()
+	space_label.text = "\n"
+	credit_lst.add_child(space_label.duplicate() )
+		
 	for asset in asset_credits:
 		var title := asset["source name"] as String
 		var author := asset["creator name"] as String
-		var _source := asset["source page"] as String
+		var source := asset["source page"] as String
 		var license := asset["license name"] as String
 		var asset_label := Label.new()
-		asset_label.text = "%s by %s [%s]" % [title, author, license]
+		asset_label.add_theme_font_size_override("font_size", 24)
+		asset_label.text = "%s by %s [%s]\n %s\n" % [title, author, license, source]
 		asset_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		credit_lst.add_child(asset_label)
+		credit_lst.add_child(space_label.duplicate() )
 
 
 func _on_return_button_pressed() -> void:
