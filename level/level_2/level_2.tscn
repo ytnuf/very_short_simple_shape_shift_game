@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=4 uid="uid://cak8wy0jnwa2k"]
+[gd_scene load_steps=9 format=4 uid="uid://cak8wy0jnwa2k"]
 
 [ext_resource type="Texture2D" uid="uid://dpepyqyatx2u3" path="res://level/background.png" id="1_1hyin"]
+[ext_resource type="Script" path="res://level/level_2/level_2.gd" id="1_5130x"]
 [ext_resource type="TileSet" uid="uid://kug5sa8sa5f8" path="res://level/tiles/block.tres" id="2_vxaey"]
 [ext_resource type="PackedScene" uid="uid://d0e8tunbd4uqg" path="res://player/base_player/base_player.tscn" id="3_nf5cm"]
 [ext_resource type="PackedScene" uid="uid://dqs0dlxcgu8xh" path="res://player/balloon_player/balloon_player.tscn" id="4_aj7sw"]
@@ -9,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://d3xmvi3uwyyxy" path="res://level/time_to_puzzle_it_up_nes.ogg" id="7_qcqlo"]
 
 [node name="Level2" type="Node2D"]
+script = ExtResource("1_5130x")
 
 [node name="UILayer" type="CanvasLayer" parent="."]
 layer = -20
@@ -55,6 +57,14 @@ tile_set = ExtResource("5_l1v71")
 [node name="Goal" parent="." instance=ExtResource("6_0igwo")]
 position = Vector2(1328, 368)
 
+[node name="EndLevelTimer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 4.0
+one_shot = true
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_qcqlo")
 autoplay = true
+
+[connection signal="end_level" from="Goal" to="." method="_on_goal_end_level"]
+[connection signal="timeout" from="EndLevelTimer" to="." method="_on_end_level_timer_timeout"]
