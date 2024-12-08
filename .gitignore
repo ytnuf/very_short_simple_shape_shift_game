@@ -1,11 +1,18 @@
+
 # Godot 4+ specific ignores
 .godot/
 /android/
+export_presets.cfg
+
+#Output
+out/
 
 # Hidden files
 .*
 !.gitignore
+!.gitmodules
+!.gitattributes
 
-# Temporary files
-*~
+#Tempory files
 tmp/
+*~
