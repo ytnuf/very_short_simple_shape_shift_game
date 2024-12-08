@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0e8tunbd4uqg"]
+[gd_scene load_steps=10 format=3 uid="uid://d0e8tunbd4uqg"]
 
 [ext_resource type="Texture2D" uid="uid://bonks3rpddw8v" path="res://player/base_player/base_player.png" id="1_iocoo"]
 [ext_resource type="Script" path="res://player/base_player/base_player.gd" id="1_p0nba"]
+[ext_resource type="AudioStream" uid="uid://c45gqk4jcqqlo" path="res://player/lose.ogg" id="3_ka7gh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8d7ej"]
 size = Vector2(30, 32)
@@ -101,5 +102,8 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("RectangleShape2D_1dlcv")
+
+[node name="LoseSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ka7gh")
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurt" unbinds=1]

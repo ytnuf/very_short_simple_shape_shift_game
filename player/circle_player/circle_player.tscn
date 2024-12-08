@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://b58ji4vb8u5x5"]
+[gd_scene load_steps=11 format=3 uid="uid://b58ji4vb8u5x5"]
 
 [ext_resource type="Script" path="res://player/circle_player/circle_player.gd" id="1_qd6ro"]
 [ext_resource type="Texture2D" uid="uid://b3cfwhoejfbed" path="res://player/circle_player/circle_player.png" id="1_ridm3"]
 [ext_resource type="PackedScene" uid="uid://d0e8tunbd4uqg" path="res://player/base_player/base_player.tscn" id="2_gldpb"]
+[ext_resource type="AudioStream" uid="uid://c45gqk4jcqqlo" path="res://player/lose.ogg" id="4_7s0hs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o1wu2"]
 radius = 16.0
@@ -104,5 +105,8 @@ collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 shape = SubResource("CircleShape2D_5f3u2")
+
+[node name="LoseSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_7s0hs")
 
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurt" unbinds=1]

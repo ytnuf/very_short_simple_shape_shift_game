@@ -7,3 +7,7 @@ func _on_goal_end_level() -> void:
 
 func _on_end_level_timer_timeout() -> void:
 	get_tree().change_scene_to_file(&"res://level/level_2/level_2.tscn")
+
+
+func _on_death() -> void:
+	get_tree().reload_current_scene()

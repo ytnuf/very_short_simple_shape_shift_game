@@ -2,6 +2,8 @@
 class_name BasePlayer
 extends CharacterBody2D
 
+signal dies
+
 const BLOCK_LENGTH : float = Constants.BLOCK_LENGTH
 
 @export var to_shape : PackedScene
@@ -9,6 +11,11 @@ const BLOCK_LENGTH : float = Constants.BLOCK_LENGTH
 var _p_meter : float = 0.0
 
 @onready var _anim := $AnimationPlayer
+@onready var _lose := $LoseSfx
+
+
+func _ready() -> void:
+	dies.connect(get_parent()._on_death)
 
 
 func _physics_process(dt: float) -> void:
@@ -62,5 +69,6 @@ func _shape_shift():
 
 
 func _on_hurt() -> void:
-	#TODO: implement death
-	print("DIE")
+	_lose.play()
+	await _lose.finished
+	dies.emit()

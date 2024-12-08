@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqs0dlxcgu8xh"]
+[gd_scene load_steps=10 format=3 uid="uid://dqs0dlxcgu8xh"]
 
 [ext_resource type="Script" path="res://player/balloon_player/balloon_player.gd" id="1_qui5i"]
 [ext_resource type="Texture2D" uid="uid://b6det6fs5he13" path="res://player/balloon_player/balloon_player.png" id="1_v1ryu"]
+[ext_resource type="AudioStream" uid="uid://c45gqk4jcqqlo" path="res://player/lose.ogg" id="3_tryv7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ysci"]
 radius = 16.0
@@ -101,3 +102,8 @@ libraries = {
 "": SubResource("AnimationLibrary_kjyqw")
 }
 autoplay = "end_shape_shift"
+
+[node name="LoseSfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tryv7")
+
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurt" unbinds=1]

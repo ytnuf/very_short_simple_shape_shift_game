@@ -2,6 +2,8 @@
 class_name CirclePlayer
 extends RigidBody2D
 
+signal dies
+
 @export var to_shape : PackedScene
 
 var velocity := Vector2.ZERO
@@ -9,10 +11,12 @@ var velocity := Vector2.ZERO
 var _min_speed := Vector2.ZERO
 
 @onready var _anim := $AnimationPlayer
+@onready var _lose := $LoseSfx
 
 
 func _ready() -> void:
 	linear_velocity = velocity
+	dies.connect(get_parent()._on_death)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -40,5 +44,6 @@ func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
 
 
 func _on_hurt() -> void:
-	#TODO: implement death
-	print("DIE")
+	_lose.play()
+	await _lose.finished
+	dies.emit()

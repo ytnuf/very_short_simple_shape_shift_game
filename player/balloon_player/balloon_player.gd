@@ -1,11 +1,19 @@
+
+class_name BalloonPlayer
 extends CharacterBody2D
 
+signal dies
 
 const BLOCK_LENGTH : float = Constants.BLOCK_LENGTH
 
 @export var to_shape : PackedScene
 
 @onready var _anim := $AnimationPlayer
+@onready var _lose := $LoseSfx
+
+
+func _ready() -> void:
+	dies.connect(get_parent()._on_death)
 
 
 func _physics_process(_delta: float) -> void:
@@ -35,5 +43,6 @@ func _shape_shift():
 
 
 func _on_hurt() -> void:
-	#TODO: implement death
-	print("DIE")
+	_lose.play()
+	await _lose.finished
+	dies.emit()
