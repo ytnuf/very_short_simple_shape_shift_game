@@ -1,0 +1,80 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5h1vohj0nbjo"]
+
+[ext_resource type="Script" path="res://menu/end_scene.gd" id="1_08mbe"]
+[ext_resource type="Texture2D" uid="uid://1upvtwtgduq4" path="res://menu/background.png" id="1_nb3m4"]
+[ext_resource type="Theme" uid="uid://brtvohdse4qye" path="res://ui/ui_theme.tres" id="2_5ilag"]
+[ext_resource type="AudioStream" uid="uid://b4mr3ie6odwtb" path="res://menu/late_night_radio.ogg" id="3_fmexm"]
+
+[node name="EndScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_08mbe")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_nb3m4")
+
+[node name="MainLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5ilag")
+theme_override_font_sizes/font_size = 84
+text = "You Win!"
+
+[node name="SecondaryLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -101.5
+offset_top = 56.0
+offset_right = 101.5
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5ilag")
+theme_override_font_sizes/font_size = 12
+text = "(Yes this game was rushed.)"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fmexm")
+autoplay = true
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = 120.0
+offset_right = 4.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5ilag")
+text = "Main Menu"
+
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]
