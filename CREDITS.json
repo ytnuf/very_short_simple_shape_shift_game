@@ -33,6 +33,17 @@
 			"source page": "https://opengameart.org/content/monostilus",
 			"license name": "CC0 1.0",
 			"license page": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en"
+		},
+		{
+			"files": [
+				"res://level/time_to_puzzle_it_up_nes.ogg"
+			],
+			"creator name": "Spring Spring",
+			"creator page": "https://opengameart.org/users/spring-spring",
+			"source name": "Time to Puzzle it Up!",
+			"source page": "https://opengameart.org/content/time-to-puzzle-it-up",
+			"license name": "CC0 1.0",
+			"license page": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en"
 		}
 	]
 }
