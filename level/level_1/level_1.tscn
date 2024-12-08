@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dpepyqyatx2u3" path="res://level/background.png" id="1_xvcdw"]
 [ext_resource type="TileSet" uid="uid://kug5sa8sa5f8" path="res://level/tiles/block.tres" id="2_c0rn0"]
 [ext_resource type="PackedScene" uid="uid://d0e8tunbd4uqg" path="res://player/base_player/base_player.tscn" id="3_pgtj7"]
-[ext_resource type="PackedScene" uid="uid://b58ji4vb8u5x5" path="res://tmp/circle_player.tscn" id="4_54l5l"]
+[ext_resource type="PackedScene" uid="uid://b58ji4vb8u5x5" path="res://player/circle_player/circle_player.tscn" id="4_54l5l"]
 [ext_resource type="TileSet" uid="uid://b1bgj4d4wse80" path="res://level/tiles/slopes.tres" id="5_qurga"]
 [ext_resource type="TileSet" uid="uid://byhpoic6u74jp" path="res://level/tiles/spikes.tres" id="6_coyjd"]
 [ext_resource type="PackedScene" uid="uid://c46difh4ogwq0" path="res://objects/goal/goal.tscn" id="7_nqge1"]

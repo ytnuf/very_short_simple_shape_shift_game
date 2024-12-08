@@ -28,19 +28,23 @@ func _shape_shift():
 		var parent := get_parent()
 		var next_form : PhysicsBody2D = to_shape.instantiate()
 		next_form.position = position
-		next_form.velocity = linear_velocity
 		next_form.to_shape = load(&"res://player/circle_player/circle_player.tscn")
 		parent.add_child(next_form)
 		queue_free()
 
 
 func _integrate_forces(state: PhysicsDirectBodyState2D) -> void:
-	# Prevent slowing down (yes, this is a bit hacky)
+	# Prevent slowing down on slope (yes, this is a bit hacky)
 	if absf(state.linear_velocity.x) < _min_speed.x:
 		state.linear_velocity.x = signf(state.linear_velocity.x) * _min_speed.x
 	_min_speed.x = absf(state.linear_velocity.x)
 	if absf(state.linear_velocity.y) < _min_speed.y:
 		state.linear_velocity.y = signf(state.linear_velocity.y) * _min_speed.y
+	
+	# Slow down on flat ground
+	if absf(state.linear_velocity.y) <= 0.01:
+		state.linear_velocity.x *= 0.99
+		_min_speed.x = absf(state.linear_velocity.x)
 
 
 func _on_hurt() -> void:
