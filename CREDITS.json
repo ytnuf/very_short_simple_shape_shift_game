@@ -44,6 +44,17 @@
 			"source page": "https://opengameart.org/content/time-to-puzzle-it-up",
 			"license name": "CC0 1.0",
 			"license page": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en"
+		},
+		{
+			"files": [
+				"res://player/lose.ogg"
+			],
+			"creator name": "suntemple",
+			"creator page": "https://freesound.org/people/suntemple/",
+			"source name": "Retro You Lose SFX",
+			"source page": "https://freesound.org/people/suntemple/sounds/253174/",
+			"license name": "CC0 1.0",
+			"license page": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.en"
 		}
 	]
 }
