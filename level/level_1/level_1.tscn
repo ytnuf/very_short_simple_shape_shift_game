@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://rwdaaw3nq255"]
+[gd_scene load_steps=11 format=4 uid="uid://rwdaaw3nq255"]
 
 [ext_resource type="Script" path="res://level/level_1/level_1.gd" id="1_on740"]
 [ext_resource type="Texture2D" uid="uid://dpepyqyatx2u3" path="res://level/background.png" id="1_xvcdw"]
 [ext_resource type="TileSet" uid="uid://kug5sa8sa5f8" path="res://level/tiles/block.tres" id="2_c0rn0"]
 [ext_resource type="PackedScene" uid="uid://d0e8tunbd4uqg" path="res://player/base_player/base_player.tscn" id="3_pgtj7"]
+[ext_resource type="Theme" uid="uid://brtvohdse4qye" path="res://ui/ui_theme.tres" id="3_too8b"]
 [ext_resource type="PackedScene" uid="uid://b58ji4vb8u5x5" path="res://player/circle_player/circle_player.tscn" id="4_54l5l"]
 [ext_resource type="TileSet" uid="uid://b1bgj4d4wse80" path="res://level/tiles/slopes.tres" id="5_qurga"]
 [ext_resource type="TileSet" uid="uid://byhpoic6u74jp" path="res://level/tiles/spikes.tres" id="6_coyjd"]
@@ -37,12 +38,44 @@ grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 1)
 
+[node name="Label" type="Label" parent="UILayer/ControlsBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_too8b")
+text = "Press Space to shape-shift anywhere"
+
 [node name="TitleBackground" type="ColorRect" parent="UILayer"]
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 32.0
 grow_horizontal = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="UILayer/TitleBackground"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -14.0
+offset_right = 20.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_too8b")
+text = "Level 1"
 
 [node name="BasePlayer" parent="." instance=ExtResource("3_pgtj7")]
 position = Vector2(1424, 112)
