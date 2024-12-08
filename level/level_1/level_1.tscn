@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://rwdaaw3nq255"]
+[gd_scene load_steps=9 format=4 uid="uid://rwdaaw3nq255"]
 
 [ext_resource type="Texture2D" uid="uid://dpepyqyatx2u3" path="res://level/background.png" id="1_xvcdw"]
 [ext_resource type="TileSet" uid="uid://kug5sa8sa5f8" path="res://level/tiles/block.tres" id="2_c0rn0"]
@@ -7,6 +7,7 @@
 [ext_resource type="TileSet" uid="uid://b1bgj4d4wse80" path="res://level/tiles/slopes.tres" id="5_qurga"]
 [ext_resource type="TileSet" uid="uid://byhpoic6u74jp" path="res://level/tiles/spikes.tres" id="6_coyjd"]
 [ext_resource type="PackedScene" uid="uid://c46difh4ogwq0" path="res://objects/goal/goal.tscn" id="7_nqge1"]
+[ext_resource type="AudioStream" uid="uid://d3xmvi3uwyyxy" path="res://level/time_to_puzzle_it_up_nes.ogg" id="8_nrjqj"]
 
 [node name="Level1" type="Node2D"]
 metadata/_edit_vertical_guides_ = [1536.0]
@@ -59,3 +60,7 @@ tile_set = ExtResource("6_coyjd")
 
 [node name="Goal" parent="." instance=ExtResource("7_nqge1")]
 position = Vector2(144, 608)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nrjqj")
+autoplay = true
